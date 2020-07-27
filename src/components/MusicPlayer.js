@@ -1,31 +1,36 @@
-import React from "react";
+import React, {useContext} from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
+import {PlayerContext} from "./Context/PlayerContext";
 
-const MusicPlayer = ({ musicUrl, isPlayerOpen, title }) => {
+const MusicPlayer = () => {
+
+  const player = useContext(PlayerContext)
+
   const style = {
-    position: "absolute",
-    bottom: isPlayerOpen ? "0px" : "-80px",
+    position: "fixed",
+    zIndex: "1000",
+    bottom: player.isOpen ? "0px" : "-80px",
     left: "0px",
-    height: "90px",
+    height: "60px",
     width: "100%",
   };
 
+  
   return (
-    <div>
-      {isPlayerOpen ? (
+    <>
+      {player.isOpen ? (
         <div style={style}>
           <AudioPlayer
-            src={musicUrl}
+            src={player.audioSource}
             autoPlay
             layout="horizontal-reverse"
-            header={title}
           />
         </div>
       ) : (
         ""
       )}
-    </div>
+    </>
   );
 };
 

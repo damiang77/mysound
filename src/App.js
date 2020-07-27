@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import MusicPlayer from "./components/MusicPlayer";
+import LandingPage from "./components/Pages/LandingPage";
+import PlayerContext from "./components/Context/PlayerContext";
 
 import {
   BrowserRouter as Router,
@@ -16,14 +18,10 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <MusicPlayer
-          musicUrl="https://api.gar.ovh/uploads/fs_13b435f0da.mpga"
-          isPlayerOpen={isPlayerOpen}
-          title="test"
-        />
-      </div>
+      <PlayerContext>
       <div>
+      <MusicPlayer/>
+        <LandingPage/>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -50,6 +48,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      </PlayerContext>
     </Router>
   );
 }
