@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import styled from "styled-components";
 import placeholder from "../../assets/placeholder.jpg";
 import play from "../../assets/play.png";
-import {PlayerContext} from "../Context/PlayerContext";
+import {PlayerContext} from "../../Context/PlayerContext";
 
 const LastSong = ({ title, artist, img, audioSource }) => {
 
