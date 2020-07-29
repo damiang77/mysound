@@ -2,6 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import LastSong from "./LastSong";
 
+
+const Container = styled.div`
+width: 100%;
+min-height: 700px;
+background-color: #fff;
+`;
+const Header = styled.h2`
+font-family: "Lato", sans-serif;
+font-size: 22px;
+color: #333333;
+text-align: center;
+margin: 1.5rem;
+`;
+
+const LastSongsContainer = styled.div`
+margin-left: 30px;
+margin-right: 30px;
+`;
+
 const LastSongs = () => {
   const data = [
     {
@@ -46,23 +65,7 @@ const LastSongs = () => {
     },
   ];
 
-  const Container = styled.div`
-    width: 100%;
-    min-height: 700px;
-    background-color: #fff;
-  `;
-  const Header = styled.h2`
-    font-family: "Lato", sans-serif;
-    font-size: 22px;
-    color: #333333;
-    text-align: center;
-    margin: 1.5rem;
-  `;
 
-  const LastSongsContainer = styled.div`
-    margin-left: 30px;
-    margin-right: 30px;
-  `;
   return (
     <Container>
       <Header>Listen last shared songs</Header>

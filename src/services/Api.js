@@ -1,25 +1,28 @@
 
+import Axios from "axios";
 
-class Api {
-    constructor(){
-        const API_ROOT = 'https://api.gar.ovh';
-    }
+const Api = () => {
+  
+ 
+};
 
+const API_ROOT = "https://api.gar.ovh";
 
-    requests = {
-        del: url =>
-          superagent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
-        get: url =>
-          superagent.get(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
-        put: (url, body) =>
-          superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
-        post: (url, body) =>
-          superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody)
-      };
-}
+let token = null;
+const tokenPlugin = (req) => {
+  if (token) {
+    req.set("authorization", `Token ${token}`);
+  }
+};
 
+const Auth = {
+  post: (login, password) =>
+    Axios.post(`${API_ROOT}/auth/local`, {
+      identifier: login,
+      password: password,
+    }),
+};
 
-
-export default{
-
-}
+export default {
+  Auth
+};

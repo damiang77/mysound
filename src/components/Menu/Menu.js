@@ -6,11 +6,8 @@ import "./MenuStyle.css";
 import Button from "../Button/Button";
 import { LoginContext } from "../../Context/LoginContext";
 
-const Menu = () => {
-  
-    const loginModal = useContext(LoginContext);
 
-  const MenuBackground = styled.nav`
+const MenuBackground = styled.nav`
     width: 100%;
     height: 46px;
     background: #333333;
@@ -47,6 +44,7 @@ const Menu = () => {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    color: white;
   `;
 
   const MenuItem = styled.div`
@@ -61,6 +59,13 @@ const Menu = () => {
     top: 0;
     border-right: 1px solid #111;
   `;
+
+
+const Menu = () => {
+  
+    const loginData = useContext(LoginContext);
+    
+  
 
   return (
     <MenuBackground>
@@ -82,11 +87,16 @@ const Menu = () => {
             </MenuLeft>
 
             <MenuRight>
-              <div onClick={loginModal.toggleModal}>
-                <Button>Sign In</Button>
+            { loginData.login ? 
+              loginData.login 
+              :
+              <>
+              <div onClick={loginData.toggleModal}>
+              <Button>Sign In</Button>
               </div>
-
-              <Button primary={true}>Create account</Button>
+              <Button primary={true}>Create account</Button> 
+              </>
+              }
             </MenuRight>
           </ContentWrapper>
         </div>
